@@ -9,7 +9,6 @@
 
 namespace IMS_Auth.Models
 {
-    using InventoryManagementSystem.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;

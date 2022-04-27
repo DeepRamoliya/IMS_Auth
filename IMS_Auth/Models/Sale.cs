@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace InventoryManagementSystem.Models
+namespace IMS_Auth.Models
 {
     using System;
     using System.Collections.Generic;

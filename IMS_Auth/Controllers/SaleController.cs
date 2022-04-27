@@ -1,5 +1,4 @@
 ﻿using IMS_Auth.Models;
-using InventoryManagementSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
