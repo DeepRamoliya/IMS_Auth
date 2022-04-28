@@ -7,11 +7,13 @@ using System.Web.Mvc;
 
 namespace IMS_Auth.Controllers
 {
+   
     public class ProductController : Controller
     {
         // GET: Product
         Entities db = new Entities();
         // GET: Product
+        
         public ActionResult Index()
         {
             return View();
@@ -23,12 +25,14 @@ namespace IMS_Auth.Controllers
             return View(list);
         }
 
-
+       
         [HttpGet]
         public ActionResult CreateProduct()
         {
             return View();
         }
+
+       
         [HttpPost]
         public ActionResult CreateProduct(Product pro)
         {
@@ -36,13 +40,14 @@ namespace IMS_Auth.Controllers
             db.SaveChanges();
             return RedirectToAction("DisplayProduct");
         }
-
+       
         [HttpGet]
         public ActionResult UpdateProduct(int id)
         {
             Product pr = db.Products.Where(x => x.id == id).SingleOrDefault();
             return View(pr);
         }
+       
         [HttpPost]
         public ActionResult UpdateProduct(int id, Product pro)
         {
@@ -54,17 +59,20 @@ namespace IMS_Auth.Controllers
 
         }
         [HttpGet]
+       
         public ActionResult ProductDetail(int id)
         {
             Product pro = db.Products.Where(x => x.id == id).SingleOrDefault();
             return View(pro);
         }
 
+        
         public ActionResult DeleteProduct(int id)
         {
             Product pro = db.Products.Where(x => x.id == id).SingleOrDefault();
             return View(pro);
         }
+
         [HttpPost]
         public ActionResult DeleteProduct(int id, Product pro)
         {

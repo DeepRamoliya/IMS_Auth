@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace IMS_Auth.Controllers
 {
+    
     public class SaleController : Controller
     {
         // GET: Sale
@@ -22,13 +23,14 @@ namespace IMS_Auth.Controllers
             List<Sale> list = db.Sales.OrderByDescending(x => x.id).ToList();
             return View(list);
         }
-
+       
         public ActionResult SaleProduct()
         {
             List<string> list = db.Products.Select(x => x.Product_Name).ToList();
             ViewBag.ProductName = new SelectList(list);
             return View();
         }
+       
         [HttpPost]
         public ActionResult SaleProduct(Sale S)
         {
@@ -37,7 +39,7 @@ namespace IMS_Auth.Controllers
             return RedirectToAction("DisplaySale");
         }
 
-
+       
         public ActionResult Edit(int id)
         {
             Sale p = db.Sales.Where(x => x.id == id).SingleOrDefault();
@@ -46,6 +48,7 @@ namespace IMS_Auth.Controllers
             return View(p);
         }
 
+       
         [HttpPost]
         public ActionResult Edit(int id, Sale S)
         {
@@ -56,6 +59,7 @@ namespace IMS_Auth.Controllers
             db.SaveChanges();
             return RedirectToAction("DisplaySale");
         }
+
         public ActionResult SaleDetail(int id)
         {
             Sale sale = db.Sales.Where(x => x.id == id).SingleOrDefault();

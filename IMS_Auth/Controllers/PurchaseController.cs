@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace IMS_Auth.Controllers
 {
+    
     public class PurchaseController : Controller
     {
         Entities db = new Entities();
@@ -16,18 +17,22 @@ namespace IMS_Auth.Controllers
             return View();
         }
 
+        
         public ActionResult DisplayPurchase()
         {
             List<Purchase> list = db.Purchases.OrderByDescending(x => x.id).ToList();
             return View(list);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult PurchaseProduct()
         {
             List<string> list = db.Products.Select(x => x.Product_Name).ToList();
             ViewBag.ProductName = new SelectList(list);
             return View();
         }
+
+       
         [HttpPost]
         public ActionResult PurchaseProduct(Purchase pur)
         {
@@ -36,7 +41,7 @@ namespace IMS_Auth.Controllers
             return RedirectToAction("DisplayPurchase");
         }
 
-
+       
         public ActionResult Edit(int id)
         {
             Purchase p = db.Purchases.Where(x => x.id == id).SingleOrDefault();
@@ -45,6 +50,7 @@ namespace IMS_Auth.Controllers
             return View(p);
         }
 
+        
         [HttpPost]
         public ActionResult Edit(int id, Purchase pur)
         {
@@ -55,17 +61,22 @@ namespace IMS_Auth.Controllers
             db.SaveChanges();
             return RedirectToAction("DisplayPurchase");
         }
+
+        
         public ActionResult PurchaseDetail(int id)
         {
             Purchase pro = db.Purchases.Where(x => x.id == id).SingleOrDefault();
             return View(pro);
         }
 
+       
         public ActionResult Delete(int id)
         {
             Purchase pro = db.Purchases.Where(x => x.id == id).SingleOrDefault();
             return View(pro);
         }
+
+       
         [HttpPost]
         public ActionResult Delete(int id, Purchase pur)
         {
