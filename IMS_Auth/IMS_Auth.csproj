@@ -376,6 +376,8 @@
     <Content Include="Views\FormMaster\DisplayFormMaster.cshtml" />
     <Content Include="Views\FormMaster\EditFormMaster.cshtml" />
     <Content Include="Views\FormMaster\Create.cshtml" />
+    <Content Include="Views\RoleMaster\CreateRoleMaster.cshtml" />
+    <Content Include="Views\RoleMaster\DeleteRoleMaster.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
