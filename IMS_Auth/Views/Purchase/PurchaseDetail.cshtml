@@ -4,14 +4,14 @@
     ViewBag.Title = "PurchaseDetail";
 }
 
-<h2>PurchaseDetail</h2>
+<h2>Purchase Detail</h2>
 
 <div>
-    <h4>Purchase</h4>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Purchase_Product)
+            @Html.DisplayName("Purchase Product")
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Purchase_Quntity)
+            @Html.DisplayName("Purchase Quntity")
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Purchase_date)
+            @Html.DisplayName("Purchase date")
         </dt>
 
         <dd>
@@ -38,6 +38,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "DisplayPurchase")
 </p>
 <input type="hidden" id="hdnMenuCode" value="purchaseproduct" />

@@ -55,7 +55,7 @@ namespace IMS_Auth.Controllers
         public ActionResult Edit(int id, Purchase pur)
         {
             Purchase p = db.Purchases.Where(x => x.id == id).SingleOrDefault();
-            p.Purchase_date = pur.Purchase_date;
+            p.Purchase_date = DateTime.Now;
             p.Purchase_Product = pur.Purchase_Product;
             p.Purchase_Quntity = pur.Purchase_Quntity;
             db.SaveChanges();

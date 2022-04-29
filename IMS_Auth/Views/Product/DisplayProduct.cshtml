@@ -4,7 +4,7 @@
     ViewBag.Title = "DisplayProduct";
 }
 
-<h2>DisplayProduct</h2>
+<h2>Product List</h2>
 
 <p>
     @Html.ActionLink("Create New", "CreateProduct")
@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Product_Name)
+            @Html.DisplayName("Product Name")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Product_Quntity)
+            @Html.DisplayName("Product Quntity")
         </th>
         <th></th>
     </tr>

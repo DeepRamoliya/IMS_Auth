@@ -4,7 +4,7 @@
     ViewBag.Title = "EditFormMaster";
 }
 
-<h2>EditFormMaster</h2>
+<h2>Edit Form</h2>
 
 
 @using (Html.BeginForm())
@@ -91,13 +91,13 @@
             </div>
         </div>*@
 
-    @*<div class="form-group">
+    <div class="form-group">
             @Html.LabelFor(model => model.CreatedBy, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CreatedBy, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CreatedBy, "", new { @class = "text-danger" })
             </div>
-        </div>*@
+        </div>
 
     @*<div class="form-group">
             @Html.LabelFor(model => model.CreatedOn, htmlAttributes: new { @class = "control-label col-md-2" })

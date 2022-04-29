@@ -4,7 +4,7 @@
     ViewBag.Title = "DisplayPurchase";
 }
 
-<h2>DisplayPurchase</h2>
+<h2>Purchase List</h2>
 
 <p>
     @Html.ActionLink("Create New", "PurchaseProduct")
@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Purchase_Product)
+            @Html.DisplayName("Purchase Product")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Purchase_Quntity)
+            @Html.DisplayName("Purchase Quntity")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Purchase_date)
+            @Html.DisplayName("Purchase date")
         </th>
         <th></th>
     </tr>

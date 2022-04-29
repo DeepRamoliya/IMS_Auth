@@ -4,14 +4,14 @@
     ViewBag.Title = "ProductDetail";
 }
 
-<h2>ProductDetail</h2>
+<h2>Product Detail</h2>
 
 <div>
-    <h4>Product</h4>
+   
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Product_Name)
+            @Html.DisplayName("Product Name")
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Product_Quntity)
+            @Html.DisplayName("Product Quntity")
         </dt>
 
         <dd>
@@ -30,6 +30,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "DisplayProduct")
 </p>
 <input type="hidden" id="hdnMenuCode" value="product" />

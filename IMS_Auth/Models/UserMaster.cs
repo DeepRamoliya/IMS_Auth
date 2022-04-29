@@ -11,10 +11,12 @@ namespace IMS_Auth.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class UserMaster
     {
         public int Id { get; set; }
+        /*[Display(Name = "User Name")]*/
         public string UserName { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
