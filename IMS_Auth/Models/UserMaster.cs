@@ -20,8 +20,8 @@ namespace IMS_Auth.Models
         public string Email { get; set; }
         public string Role { get; set; }
         public string Designation { get; set; }
-        public Nullable<int> MobileNo { get; set; }
-        public Nullable<int> PhoneNo { get; set; }
+        public string MobileNo { get; set; }
+        public string PhoneNo { get; set; }
         public Nullable<int> IsActive { get; set; }
         public Nullable<int> IsDeleted { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }

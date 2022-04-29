@@ -177,6 +177,7 @@
     <Compile Include="Controllers\PurchaseController.cs" />
     <Compile Include="Controllers\RoleMasterController.cs" />
     <Compile Include="Controllers\SaleController.cs" />
+    <Compile Include="Controllers\UserMasterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -376,8 +377,10 @@
     <Content Include="Views\FormMaster\DisplayFormMaster.cshtml" />
     <Content Include="Views\FormMaster\EditFormMaster.cshtml" />
     <Content Include="Views\FormMaster\Create.cshtml" />
-    <Content Include="Views\RoleMaster\CreateRoleMaster.cshtml" />
-    <Content Include="Views\RoleMaster\DeleteRoleMaster.cshtml" />
+    <Content Include="Views\UserMaster\DisplayUserMasters.cshtml" />
+    <Content Include="Views\UserMaster\Create.cshtml" />
+    <Content Include="Views\UserMaster\EditUserMasters.cshtml" />
+    <Content Include="Views\UserMaster\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
