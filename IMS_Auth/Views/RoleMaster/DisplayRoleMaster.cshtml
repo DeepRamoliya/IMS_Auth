@@ -7,7 +7,7 @@
 <h2>DisplayRoleMaster</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateRoleMaster")
 </p>
 <table class="table">
     <tr>
@@ -17,19 +17,20 @@
         <th>
             @Html.DisplayNameFor(model => model.RoleCode)
         </th>
-        <th>
+       @* <th>
             @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.CreatedBy)
         </th>
-        <th>
+       @* <th>
             @Html.DisplayNameFor(model => model.UpdatedBy)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UpdatedOn)
+        </th>*@
+        <th>
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -40,22 +41,23 @@
         <td>
             @Html.DisplayFor(modelItem => item.RoleCode)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CreatedOn)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.CreatedBy)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.UpdatedBy)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UpdatedOn)
-        </td>
+        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RoleId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RoleId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RoleId })
+
+            @Html.ActionLink("Setting", "ManageFormControll", new { id = item.RoleId }) |
+            @Html.ActionLink("Edit", "EditRoleMaster", new { id = item.RoleId })
+            @* @Html.ActionLink("Details", "Details", new { id=item.RoleId })*@
         </td>
     </tr>
 }

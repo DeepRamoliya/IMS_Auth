@@ -21,6 +21,18 @@ namespace IMS_Auth.Controllers
             List<RoleMaster> list = db.RoleMasters.OrderByDescending(x => x.RoleId).ToList();
             return View(list);
         }
+        public ActionResult CreateRoleMaster()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateRoleMaster(RoleMaster role)
+        {
+             db.RoleMasters.Add(role);
+            role.CreatedOn = DateTime.Now;
+            db.SaveChanges();
+            return RedirectToAction("DisplayRoleMaster");
+        }
 
         public ActionResult EditRoleMaster(int id )
         {
@@ -35,11 +47,31 @@ namespace IMS_Auth.Controllers
             pr.RoleCode = role.RoleCode;
             pr.CreatedBy = role.CreatedBy;
             pr.UpdatedBy = role.UpdatedBy;
-            pr.UpdatedOn = DateTime.Today;
+            pr.UpdatedOn = DateTime.Now;
 
             db.SaveChanges();
             return RedirectToAction("DisplayRoleMaster");
         }
+
+        public ActionResult ManageFormControll()
+        {
+
+            return View(); 
+        }
+       /* public ActionResult DeleteRoleMaster(int id)
+        {
+            RoleMaster pro = db.RoleMasters.Where(x => x.RoleId == id).SingleOrDefault();
+            return View(pro);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteRoleMaster(int id, Product pro)
+        {
+            RoleMaster p = db.RoleMasters.Where(x => x.RoleId == id).SingleOrDefault();
+            db.RoleMasters.Remove(p);
+            db.SaveChanges();
+            return RedirectToAction("DisplayRoleMaster");
+        }*/
 
     }
 }
