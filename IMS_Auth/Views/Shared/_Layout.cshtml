@@ -45,8 +45,8 @@
     <script>
         $(document).ready(function () {
             var menuLi = $("#hdnMenuCode").val();
+            $('#' + menuLi + '').addClass('active')
             //$('.navbar-nav').find('[href="' + window.location.pathname + '"]').addClass('active')
-            $('#' + menuLi+'').addClass('active')
         });
     </script>
 </head>

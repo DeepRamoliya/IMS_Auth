@@ -16,7 +16,16 @@
     <li id="saleproduct">
         @Html.ActionLink("Sale Product", "DisplaySale", "Sale")
     </li>
-    <li>
+    <li id="rolemaster">
+        @Html.ActionLink("Role Master", "DisplayRoleMaster", "RoleMaster")
+    </li>
+    <li id="formmaster">
+        @Html.ActionLink("Form Master", "DisplayFormMaster", "FormMaster")
+    </li>
+    <li id="usermaster">
+        @Html.ActionLink("User Master", "DisplayUserMaster", "UserMaster")
+    </li>
+    <li id="usermail">
         @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
     </li>
     <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
