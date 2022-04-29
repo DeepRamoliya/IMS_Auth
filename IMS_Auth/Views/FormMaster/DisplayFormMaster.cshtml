@@ -1,0 +1,111 @@
+﻿@model IEnumerable<IMS_Auth.Models.FormMaster>
+
+@{
+    ViewBag.Title = "DisplayFormMaster";
+}
+
+<h2>DisplayFormMaster</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Form Name")
+        </th>
+        <th>
+            @Html.DisplayName("Form Code")
+        </th>
+        <th>
+            @Html.DisplayName("Form Url")
+        </th>
+        <th>
+            @Html.DisplayName("Parent Form")
+        </th>
+
+        <th>
+            @Html.DisplayName("Display Index")
+        </th>
+
+        <th>
+            @Html.DisplayName("Action")
+        </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.Icon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDisplayMenu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedOn)
+        </th>
+        <th></th>*@
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NavigateURL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentFormId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FormAccessCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisplayOrder)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Icon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDisplayMenu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDeleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedOn)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "EditFormMaster", new { id=item.Id }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -24,7 +24,7 @@ namespace IMS_Auth.Controllers
             return View(list);
         }
 
-        [Authorize(Roles = "Admin")]
+        
         public ActionResult PurchaseProduct()
         {
             List<string> list = db.Products.Select(x => x.Product_Name).ToList();

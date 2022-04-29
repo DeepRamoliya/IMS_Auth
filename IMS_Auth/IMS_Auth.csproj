@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FormMasterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -371,9 +372,14 @@
     <Content Include="Views\Sale\Delete.cshtml" />
     <Content Include="Views\RoleMaster\DisplayRoleMaster.cshtml" />
     <Content Include="Views\RoleMaster\EditRoleMaster.cshtml" />
+    <Content Include="Views\FormMaster\Delete.cshtml" />
+    <Content Include="Views\FormMaster\DisplayFormMaster.cshtml" />
+    <Content Include="Views\FormMaster\EditFormMaster.cshtml" />
+    <Content Include="Views\FormMaster\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Form\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
