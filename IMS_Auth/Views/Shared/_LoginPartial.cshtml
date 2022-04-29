@@ -23,7 +23,7 @@
         @Html.ActionLink("Form Master", "DisplayFormMaster", "FormMaster")
     </li>
     <li id="usermaster">
-        @Html.ActionLink("User Master", "DisplayUserMaster", "UserMaster")
+        @Html.ActionLink("User Master", "DisplayUserMasters", "UserMaster")
     </li>
     <li >
         @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
