@@ -12,17 +12,15 @@ namespace IMS_Auth.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class FormMaster
+    public partial class FormRoleMapping
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string NavigateURL { get; set; }
-        public string ParentFormId { get; set; }
-        public string FormAccessCode { get; set; }
-        public string DisplayOrder { get; set; }
-        public Nullable<bool> IsDisplayMenu { get; set; }
-        public Nullable<bool> IsActive { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<int> FormID { get; set; }
+        public Nullable<int> RoleID { get; set; }
+        public Nullable<bool> AllowInsert { get; set; }
+        public Nullable<bool> AllowEdit { get; set; }
+        public Nullable<bool> AllowDelete { get; set; }
+        public Nullable<bool> AllowView { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string UpdatedBy { get; set; }

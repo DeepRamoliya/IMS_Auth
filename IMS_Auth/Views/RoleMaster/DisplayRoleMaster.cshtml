@@ -7,7 +7,7 @@
 <h2>Role List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateRoleMaster")
+    @Html.ActionLink("Create New", "CreateRoleMaster","", new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -17,13 +17,16 @@
         <th>
             @Html.DisplayName("Role Code")
         </th>
-       @* <th>
+        @* <th>
             @Html.DisplayNameFor(model => model.CreatedOn)
         </th>*@
         <th>
             @Html.DisplayName("Created By")
         </th>
-       @* <th>
+        @*<th>
+            @Html.DisplayName("Action")
+        </th>*@
+        @* <th>
             @Html.DisplayNameFor(model => model.UpdatedBy)
         </th>
         <th>
@@ -34,32 +37,35 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RoleName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RoleCode)
-        </td>
-        @*<td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.RoleName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RoleCode)
+    </td>
+    @*<td>
             @Html.DisplayFor(modelItem => item.CreatedOn)
         </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        @*<td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedBy)
+    </td>
+    @*<td>
+        @Html.DisplayFor(modelItem => item.Action)
+    </td>*@
+    @*<td>
             @Html.DisplayFor(modelItem => item.UpdatedBy)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UpdatedOn)
         </td>*@
-        <td>
+    <td>
 
-            @Html.ActionLink("Setting", "ManageFormControll", new { id = item.RoleId }) |
-            @Html.ActionLink("Edit", "EditRoleMaster", new { id = item.RoleId })
-            @* @Html.ActionLink("Details", "Details", new { id=item.RoleId })*@
-        </td>
-    </tr>
+        @Html.ActionLink("Setting", "ManageFormControll","FormMaster", new { id = item.RoleId }, new { @class = "btn btn-default" }) |
+        @Html.ActionLink("Edit", "EditRoleMaster", new { id = item.RoleId }, new { @class = "btn btn-info" })
+        @* @Html.ActionLink("Details", "Details", new { id=item.RoleId })*@
+    </td>
+</tr>
 }
 
 </table>

@@ -7,7 +7,7 @@
 <h2>User List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create","", new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -29,9 +29,9 @@
         <th>
             @Html.DisplayName("Mobile No")
         </th>
-        <th>
+        @*<th>
             @Html.DisplayName("Phone No")
-        </th>
+        </th>*@
         @*<th>
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
@@ -75,9 +75,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.MobileNo)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.PhoneNo)
-        </td>
+        </td>*@
         @*<td>
             @Html.DisplayFor(modelItem => item.IsActive)
         </td>
@@ -97,9 +97,9 @@
             @Html.DisplayFor(modelItem => item.UpdatedBy)
         </td>*@
         <td>
-            @Html.ActionLink("Edit", "EditUserMasters", new { id=item.Id }) |
+            @Html.ActionLink("Edit", "EditUserMasters", new { id=item.Id },new {@class="btn btn-info" }) |
             @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

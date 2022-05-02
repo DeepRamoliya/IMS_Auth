@@ -7,21 +7,22 @@
 <h2>Form List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "",new { @class = "btn btn-primary" })
 </p>
-<table class="table">
+<table class="table"> 
     <tr>
         <th>
             @Html.DisplayName("Form Name")
         </th>
         <th>
-            @Html.DisplayName("Form Code")
-        </th>
-        <th>
             @Html.DisplayName("Form Url")
         </th>
+
         <th>
             @Html.DisplayName("Parent Form")
+        </th>
+        <th>
+            @Html.DisplayName("Form Code")
         </th>
 
         <th>
@@ -101,9 +102,9 @@
             @Html.DisplayFor(modelItem => item.UpdatedOn)
         </td>*@
         <td>
-            @Html.ActionLink("Edit", "EditFormMaster", new { id=item.Id }) |
+            @Html.ActionLink("Edit", "EditFormMaster", new { id=item.Id },new {@class= "btn btn-info"}) |
             @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
