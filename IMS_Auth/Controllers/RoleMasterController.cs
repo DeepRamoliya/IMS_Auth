@@ -53,10 +53,10 @@ namespace IMS_Auth.Controllers
             return RedirectToAction("DisplayRoleMaster");
         }
 
-        public ActionResult ManageFormControll()
+        public ActionResult ManageFormControll( int id)
         {
-
-            return View(); 
+            List<FormRoleMapping> list = db.FormRoleMappings.OrderByDescending(x => x.Id).ToList();
+            return View(list);
         }
        /* public ActionResult DeleteRoleMaster(int id)
         {
