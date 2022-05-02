@@ -18,6 +18,7 @@ namespace IMS_Auth.Controllers
         public ActionResult DisplayFormMaster()
         {
             List<FormMaster> list = db.FormMasters.OrderByDescending(x => x.Id).ToList();
+            ViewBag.ParentFormId = new SelectList(list);
             return View(list);
         }
 
@@ -58,7 +59,7 @@ namespace IMS_Auth.Controllers
             pr.UpdatedBy = role.UpdatedBy;
             pr.UpdatedOn = DateTime.Now;
 
-            db.SaveChanges();
+            db.SaveChanges(); 
             return RedirectToAction("DisplayFormMaster");
         }
 
