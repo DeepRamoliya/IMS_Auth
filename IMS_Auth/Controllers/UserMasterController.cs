@@ -53,7 +53,7 @@ namespace IMS_Auth.Controllers
             ur.Role = user.Role;
             ur.Designation = user.Designation;
             ur.MobileNo = user.MobileNo;
-            ur.PhoneNo = user.PhoneNo;
+           /* ur.PhoneNo = user.PhoneNo;*/
             ur.UpdatedBy = user.UpdatedBy;
             ur.UpdatedOn = DateTime.Now;
 

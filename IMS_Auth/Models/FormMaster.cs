@@ -17,13 +17,12 @@ namespace IMS_Auth.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string NavigateURL { get; set; }
-        public int ParentFormId { get; set; }
+        public string ParentFormId { get; set; }
         public string FormAccessCode { get; set; }
         public string DisplayOrder { get; set; }
-        public byte[] Icon { get; set; }
-        public Nullable<int> IsDisplayMenu { get; set; }
-        public Nullable<int> IsActive { get; set; }
-        public Nullable<int> IsDeleted { get; set; }
+        public Nullable<bool> IsDisplayMenu { get; set; }
+        public Nullable<bool> IsActive { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string UpdatedBy { get; set; }

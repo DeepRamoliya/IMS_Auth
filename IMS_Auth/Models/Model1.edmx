@@ -73,13 +73,28 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="NavigateURL" Type="varchar" MaxLength="50" />
-          <Property Name="ParentFormId" Type="int" Nullable="false" />
+          <Property Name="ParentFormId" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FormAccessCode" Type="varchar" MaxLength="50" />
           <Property Name="DisplayOrder" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Icon" Type="image" />
-          <Property Name="IsDisplayMenu" Type="int" />
-          <Property Name="IsActive" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="IsDisplayMenu" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FormRoleMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormID" Type="int" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="AllowInsert" Type="bit" />
+          <Property Name="AllowEdit" Type="bit" />
+          <Property Name="AllowDelete" Type="bit" />
+          <Property Name="AllowView" Type="bit" />
           <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
@@ -133,10 +148,9 @@
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="Role" Type="varchar" MaxLength="50" />
           <Property Name="Designation" Type="varchar" MaxLength="50" />
-          <Property Name="MobileNo" Type="varchar" MaxLength="50" />
-          <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
-          <Property Name="IsActive" Type="int" />
-          <Property Name="IsDeleted" Type="int" />
+          <Property Name="MobileNo" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdatedOn" Type="datetime" />
@@ -206,6 +220,7 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FormMaster" EntityType="Self.FormMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormRoleMapping" EntityType="Self.FormRoleMapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
@@ -370,40 +385,40 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="RoleMasters" EntityType="Model.RoleMaster" />
           <EntitySet Name="FormMasters" EntityType="Model.FormMaster" />
+          <EntitySet Name="RoleMasters" EntityType="Model.RoleMaster" />
           <EntitySet Name="UserMasters" EntityType="Model.UserMaster" />
+          <EntitySet Name="FormRoleMappings" EntityType="Model.FormRoleMapping" />
         </EntityContainer>
+        <EntityType Name="FormMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NavigateURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParentFormId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FormAccessCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayOrder" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDisplayMenu" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="RoleMaster">
           <Key>
             <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="7" />
-        </EntityType>
-        <EntityType Name="FormMaster">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NavigateURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ParentFormId" Type="Int32" Nullable="false" />
-          <Property Name="FormAccessCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DisplayOrder" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Icon" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="IsDisplayMenu" Type="Int32" />
-          <Property Name="IsActive" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="UserMaster">
           <Key>
@@ -415,14 +430,29 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="MobileNo" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FormRoleMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormID" Type="Int32" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="AllowInsert" Type="Boolean" />
+          <Property Name="AllowEdit" Type="Boolean" />
+          <Property Name="AllowDelete" Type="Boolean" />
+          <Property Name="AllowView" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -522,6 +552,25 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="FormMasters">
+            <EntityTypeMapping TypeName="Model.FormMaster">
+              <MappingFragment StoreEntitySet="FormMaster">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDisplayMenu" ColumnName="IsDisplayMenu" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="FormAccessCode" ColumnName="FormAccessCode" />
+                <ScalarProperty Name="ParentFormId" ColumnName="ParentFormId" />
+                <ScalarProperty Name="NavigateURL" ColumnName="NavigateURL" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="RoleMasters">
             <EntityTypeMapping TypeName="Model.RoleMaster">
               <MappingFragment StoreEntitySet="RoleMaster">
@@ -535,26 +584,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FormMasters">
-            <EntityTypeMapping TypeName="Model.FormMaster">
-              <MappingFragment StoreEntitySet="FormMaster">
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsDisplayMenu" ColumnName="IsDisplayMenu" />
-                <ScalarProperty Name="Icon" ColumnName="Icon" />
-                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-                <ScalarProperty Name="FormAccessCode" ColumnName="FormAccessCode" />
-                <ScalarProperty Name="ParentFormId" ColumnName="ParentFormId" />
-                <ScalarProperty Name="NavigateURL" ColumnName="NavigateURL" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserMasters">
             <EntityTypeMapping TypeName="Model.UserMaster">
               <MappingFragment StoreEntitySet="UserMaster">
@@ -564,13 +593,29 @@
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
                 <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
                 <ScalarProperty Name="Designation" ColumnName="Designation" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormRoleMappings">
+            <EntityTypeMapping TypeName="Model.FormRoleMapping">
+              <MappingFragment StoreEntitySet="FormRoleMapping">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="AllowView" ColumnName="AllowView" />
+                <ScalarProperty Name="AllowDelete" ColumnName="AllowDelete" />
+                <ScalarProperty Name="AllowEdit" ColumnName="AllowEdit" />
+                <ScalarProperty Name="AllowInsert" ColumnName="AllowInsert" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="FormID" ColumnName="FormID" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
