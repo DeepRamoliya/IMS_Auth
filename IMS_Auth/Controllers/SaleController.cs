@@ -62,8 +62,8 @@ namespace IMS_Auth.Controllers
 
         public ActionResult SaleDetail(int id)
         {
-            Sale sale = db.Sales.Where(x => x.id == id).SingleOrDefault();
-            return View(sale);
+            Sale pro = db.Sales.Where(x => x.id == id).SingleOrDefault();
+            return View(pro);
         }
 
         public ActionResult Delete(int id)

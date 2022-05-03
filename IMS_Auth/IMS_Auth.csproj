@@ -489,6 +489,7 @@
     <Content Include="Views\UserMaster\Delete.cshtml" />
     <Content Include="Views\RoleMaster\CreateRoleMaster.cshtml" />
     <Content Include="Views\RoleMaster\DeleteRoleMaster.cshtml" />
+    <Content Include="Views\RoleMaster\ManageFormControll.cshtml" />
     <Content Include="Views\Sale\SaleDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
