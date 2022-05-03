@@ -7,7 +7,7 @@
 <h2>Edit Form</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
@@ -36,7 +36,7 @@
     <div class="form-group">
         @Html.Label("Parent Form Id", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.ParentFormId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.DropDownListFor(model => model.ParentFormId, ViewBag.ParentFormId as SelectList, "Select Parent Form", new { @class = "form-select form-control" })
             @Html.ValidationMessageFor(model => model.ParentFormId, "", new { @class = "text-danger" })
         </div>
     </div>
