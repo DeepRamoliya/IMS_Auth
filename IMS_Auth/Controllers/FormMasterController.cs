@@ -18,12 +18,14 @@ namespace IMS_Auth.Controllers
         public ActionResult DisplayFormMaster()
         {
             List<FormMaster> list = db.FormMasters.OrderByDescending(x => x.Id).ToList();
-            ViewBag.ParentFormId = new SelectList(list);
+            /*ViewBag.ParentFormId = new SelectList(list);*/
             return View(list);
         }
 
         public ActionResult Create()
         {
+            List<string> list = db.FormMasters.Select(x => x.FormAccessCode).ToList();
+            ViewBag.ParentFormId = new SelectList(list);
             return View();
         }
 
@@ -31,6 +33,7 @@ namespace IMS_Auth.Controllers
         [HttpPost]
         public ActionResult Create(FormMaster form)
         {
+            
             db.FormMasters.Add(form);
             form.CreatedOn = DateTime.Now;
             db.SaveChanges();
