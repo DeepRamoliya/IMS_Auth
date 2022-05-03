@@ -24,6 +24,8 @@ namespace IMS_Auth.Controllers
 
         public ActionResult Create()
         {
+            List<string> list = db.RoleMasters.Select(x => x.RoleName).ToList();
+            ViewBag.Role = new SelectList(list);
             return View();
         }
 
@@ -31,6 +33,7 @@ namespace IMS_Auth.Controllers
         [HttpPost]
         public ActionResult Create(UserMaster user)
         {
+
             db.UserMasters.Add(user);
             user.CreatedOn = DateTime.Now;
             db.SaveChanges();
