@@ -28,7 +28,7 @@ namespace IMS_Auth.Controllers
         [HttpPost]
         public ActionResult CreateRoleMaster(RoleMaster role)
         {
-             db.RoleMasters.Add(role);
+            db.RoleMasters.Add(role);
             role.CreatedOn = DateTime.Now;
             db.SaveChanges();
             return RedirectToAction("DisplayRoleMaster");

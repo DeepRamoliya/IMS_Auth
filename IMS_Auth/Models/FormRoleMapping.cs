@@ -11,22 +11,15 @@ namespace IMS_Auth.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class FormRoleMapping
     {
         public int Id { get; set; }
-        [DisplayName("Form ID")]
         public Nullable<int> FormID { get; set; }
-        [DisplayName("Role ID")]
         public Nullable<int> RoleID { get; set; }
-        [DisplayName("Create")]
         public Nullable<bool> AllowInsert { get; set; }
-        [DisplayName("Edit")]
         public Nullable<bool> AllowEdit { get; set; }
-        [DisplayName("Delete")]
         public Nullable<bool> AllowDelete { get; set; }
-        [DisplayName("View")]
         public Nullable<bool> AllowView { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
