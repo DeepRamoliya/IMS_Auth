@@ -1,675 +1,647 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
-  <!-- EF Runtime content -->
-  <edmx:Runtime>
-    <!-- SSDL content -->
-    <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-            <PropertyRef Name="ContextKey" />
-          </Key>
-          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
-          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AspNetRoles">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AspNetUserClaims">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="ClaimType" Type="nvarchar(max)" />
-          <Property Name="ClaimValue" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="AspNetUserLogins">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AspNetUserRoles">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AspNetUsers">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="256" />
-          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
-          <Property Name="PasswordHash" Type="nvarchar(max)" />
-          <Property Name="SecurityStamp" Type="nvarchar(max)" />
-          <Property Name="PhoneNumber" Type="nvarchar(max)" />
-          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="datetime" />
-          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-        </EntityType>
-        <EntityType Name="FormMaster">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="NavigateURL" Type="varchar" MaxLength="50" />
-          <Property Name="ParentFormId" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="FormAccessCode" Type="varchar" MaxLength="50" />
-          <Property Name="DisplayOrder" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsDisplayMenu" Type="bit" />
-          <Property Name="IsActive" Type="bit" />
-          <Property Name="IsDeleted" Type="bit" />
-          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="UpdatedOn" Type="datetime" />
-        </EntityType>
-        <EntityType Name="FormRoleMapping">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FormID" Type="int" />
-          <Property Name="RoleID" Type="int" />
-          <Property Name="AllowInsert" Type="bit" />
-          <Property Name="AllowEdit" Type="bit" />
-          <Property Name="AllowDelete" Type="bit" />
-          <Property Name="AllowView" Type="bit" />
-          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="UpdatedOn" Type="datetime" />
-        </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Product_Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Product_Quntity" Type="varchar" MaxLength="5" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Purchase">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Purchase_Product" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Purchase_Quntity" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="Purchase_date" Type="date" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RoleMaster">
-          <Key>
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="RoleId" Type="int" Nullable="false" />
-          <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="RoleCode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
-          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="UpdatedOn" Type="datetime" />
-        </EntityType>
-        <EntityType Name="Sale">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Sale_Product" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Sale_Quntity" Type="varchar" MaxLength="5" Nullable="false" />
-          <Property Name="Sale_date" Type="date" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UserMaster">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="50" />
-          <Property Name="Role" Type="varchar" MaxLength="50" />
-          <Property Name="Designation" Type="varchar" MaxLength="50" />
-          <Property Name="MobileNo" Type="varchar" MaxLength="50" />
-          <Property Name="IsActive" Type="bit" />
-          <Property Name="IsDeleted" Type="bit" />
-          <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="UpdatedOn" Type="datetime" />
-          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaims">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogins">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetRoles">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserRoles">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserRoles">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FormMaster" EntityType="Self.FormMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FormRoleMapping" EntityType="Self.FormRoleMapping" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
-    <!-- CSDL content -->
-    <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="C__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-            <PropertyRef Name="ContextKey" />
-          </Key>
-          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AspNetRole">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
-        </EntityType>
-        <EntityType Name="AspNetUserClaim">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
-        </EntityType>
-        <EntityType Name="AspNetUserLogin">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
-        </EntityType>
-        <EntityType Name="AspNetUser">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
-        </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Product_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Product_Quntity" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Purchase">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Purchase_Product" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Purchase_Quntity" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Purchase_date" Type="DateTime" Nullable="false" Precision="0" />
-        </EntityType>
-        <EntityType Name="Sale">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Sale_Product" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Sale_Quntity" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Sale_date" Type="DateTime" Nullable="false" Precision="0" />
-        </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaims">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogins">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="AspNetUserRoles">
-          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
-          <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="Purchases" EntityType="Self.Purchase" />
-          <EntitySet Name="Sales" EntityType="Self.Sale" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-          </AssociationSet>
-          <EntitySet Name="FormMasters" EntityType="Model.FormMaster" />
-          <EntitySet Name="RoleMasters" EntityType="Model.RoleMaster" />
-          <EntitySet Name="UserMasters" EntityType="Model.UserMaster" />
-          <EntitySet Name="FormRoleMappings" EntityType="Model.FormRoleMapping" />
-        </EntityContainer>
-        <EntityType Name="RoleMaster">
-          <Key>
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
-          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="7" />
-        </EntityType>
-        <EntityType Name="FormMaster">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NavigateURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ParentFormId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FormAccessCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DisplayOrder" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsDisplayMenu" Type="Boolean" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="RoleMaster">
-          <Key>
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RoleCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="7" />
-        </EntityType>
-        <EntityType Name="UserMaster">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Int32" />
-          <Property Name="IsDeleted" Type="Int32" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="FormRoleMapping">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FormID" Type="Int32" />
-          <Property Name="RoleID" Type="Int32" />
-          <Property Name="AllowInsert" Type="Boolean" />
-          <Property Name="AllowEdit" Type="Boolean" />
-          <Property Name="AllowDelete" Type="Boolean" />
-          <Property Name="AllowView" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="FormRoleMapping">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FormID" Type="Int32" />
-          <Property Name="RoleID" Type="Int32" />
-          <Property Name="AllowInsert" Type="Boolean" />
-          <Property Name="AllowEdit" Type="Boolean" />
-          <Property Name="AllowDelete" Type="Boolean" />
-          <Property Name="AllowView" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-        </EntityType>
-      </Schema>
-    </edmx:ConceptualModels>
-    <!-- C-S mapping content -->
-    <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
-          <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="Model.C__MigrationHistory">
-              <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="Model.AspNetRole">
-              <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="Model.AspNetUserClaim">
-              <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="Model.AspNetUserLogin">
-              <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="Model.AspNetUser">
-              <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="Model.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
-                <ScalarProperty Name="Product_Quntity" ColumnName="Product_Quntity" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Purchases">
-            <EntityTypeMapping TypeName="Model.Purchase">
-              <MappingFragment StoreEntitySet="Purchase">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Purchase_Product" ColumnName="Purchase_Product" />
-                <ScalarProperty Name="Purchase_Quntity" ColumnName="Purchase_Quntity" />
-                <ScalarProperty Name="Purchase_date" ColumnName="Purchase_date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sales">
-            <EntityTypeMapping TypeName="Model.Sale">
-              <MappingFragment StoreEntitySet="Sale">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Sale_Product" ColumnName="Sale_Product" />
-                <ScalarProperty Name="Sale_Quntity" ColumnName="Sale_Quntity" />
-                <ScalarProperty Name="Sale_date" ColumnName="Sale_date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetRoles">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-            <EndProperty Name="AspNetUsers">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="FormMasters">
-            <EntityTypeMapping TypeName="Model.FormMaster">
-              <MappingFragment StoreEntitySet="FormMaster">
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsDisplayMenu" ColumnName="IsDisplayMenu" />
-                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-                <ScalarProperty Name="FormAccessCode" ColumnName="FormAccessCode" />
-                <ScalarProperty Name="ParentFormId" ColumnName="ParentFormId" />
-                <ScalarProperty Name="NavigateURL" ColumnName="NavigateURL" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RoleMasters">
-            <EntityTypeMapping TypeName="Model.RoleMaster">
-              <MappingFragment StoreEntitySet="RoleMaster">
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserMasters">
-            <EntityTypeMapping TypeName="Model.UserMaster">
-              <MappingFragment StoreEntitySet="UserMaster">
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
-                <ScalarProperty Name="Designation" ColumnName="Designation" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FormRoleMappings">
-            <EntityTypeMapping TypeName="Model.FormRoleMapping">
-              <MappingFragment StoreEntitySet="FormRoleMapping">
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="AllowView" ColumnName="AllowView" />
-                <ScalarProperty Name="AllowDelete" ColumnName="AllowDelete" />
-                <ScalarProperty Name="AllowEdit" ColumnName="AllowEdit" />
-                <ScalarProperty Name="AllowInsert" ColumnName="AllowInsert" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="FormID" ColumnName="FormID" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
-  </edmx:Runtime>
-  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
-    <Connection>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
-      </DesignerInfoPropertySet>
-    </Connection>
-    <Options>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
-      </DesignerInfoPropertySet>
-    </Options>
-    <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
-  </Designer>
+	<!-- EF Runtime content -->
+	<edmx:Runtime>
+		<!-- SSDL content -->
+		<edmx:StorageModels>
+			<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+				<EntityType Name="__MigrationHistory">
+					<Key>
+						<PropertyRef Name="MigrationId" />
+						<PropertyRef Name="ContextKey" />
+					</Key>
+					<Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+					<Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+					<Property Name="Model" Type="varbinary(max)" Nullable="false" />
+					<Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+				</EntityType>
+				<EntityType Name="AspNetRoles">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+					<Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+				</EntityType>
+				<EntityType Name="AspNetUserClaims">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+					<Property Name="ClaimType" Type="nvarchar(max)" />
+					<Property Name="ClaimValue" Type="nvarchar(max)" />
+				</EntityType>
+				<EntityType Name="AspNetUserLogins">
+					<Key>
+						<PropertyRef Name="LoginProvider" />
+						<PropertyRef Name="ProviderKey" />
+						<PropertyRef Name="UserId" />
+					</Key>
+					<Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+					<Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+					<Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+				</EntityType>
+				<EntityType Name="AspNetUserRoles">
+					<Key>
+						<PropertyRef Name="UserId" />
+						<PropertyRef Name="RoleId" />
+					</Key>
+					<Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+					<Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+				</EntityType>
+				<EntityType Name="AspNetUsers">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+					<Property Name="Email" Type="nvarchar" MaxLength="256" />
+					<Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+					<Property Name="PasswordHash" Type="nvarchar(max)" />
+					<Property Name="SecurityStamp" Type="nvarchar(max)" />
+					<Property Name="PhoneNumber" Type="nvarchar(max)" />
+					<Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+					<Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+					<Property Name="LockoutEndDateUtc" Type="datetime" />
+					<Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+					<Property Name="AccessFailedCount" Type="int" Nullable="false" />
+					<Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+				</EntityType>
+				<EntityType Name="FormMaster">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+					<Property Name="NavigateURL" Type="varchar" MaxLength="50" />
+					<Property Name="ParentFormId" Type="varchar" MaxLength="50" Nullable="false" />
+					<Property Name="FormAccessCode" Type="varchar" MaxLength="50" />
+					<Property Name="DisplayOrder" Type="varchar" MaxLength="50" Nullable="false" />
+					<Property Name="IsDisplayMenu" Type="bit" />
+					<Property Name="IsActive" Type="bit" />
+					<Property Name="IsDeleted" Type="bit" />
+					<Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+					<Property Name="CreatedOn" Type="datetime" />
+					<Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+					<Property Name="UpdatedOn" Type="datetime" />
+				</EntityType>
+				<EntityType Name="FormRoleMapping">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="FormID" Type="int" />
+					<Property Name="RoleID" Type="int" />
+					<Property Name="AllowInsert" Type="bit" />
+					<Property Name="AllowEdit" Type="bit" />
+					<Property Name="AllowDelete" Type="bit" />
+					<Property Name="AllowView" Type="bit" />
+					<Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+					<Property Name="CreatedOn" Type="datetime" />
+					<Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+					<Property Name="UpdatedOn" Type="datetime" />
+				</EntityType>
+				<EntityType Name="Product">
+					<Key>
+						<PropertyRef Name="id" />
+					</Key>
+					<Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="Product_Name" Type="varchar" MaxLength="50" Nullable="false" />
+					<Property Name="Product_Quntity" Type="varchar" MaxLength="5" Nullable="false" />
+				</EntityType>
+				<EntityType Name="Purchase">
+					<Key>
+						<PropertyRef Name="id" />
+					</Key>
+					<Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="Purchase_Product" Type="varchar" MaxLength="50" Nullable="false" />
+					<Property Name="Purchase_Quntity" Type="varchar" MaxLength="5" Nullable="false" />
+					<Property Name="Purchase_date" Type="date" Nullable="false" />
+				</EntityType>
+				<EntityType Name="RoleMaster">
+					<Key>
+						<PropertyRef Name="RoleId" />
+					</Key>
+					<Property Name="RoleId" Type="int" Nullable="false" />
+					<Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
+					<Property Name="RoleCode" Type="varchar" MaxLength="50" Nullable="false" />
+					<Property Name="CreatedOn" Type="datetime" Nullable="false" />
+					<Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+					<Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+					<Property Name="UpdatedOn" Type="datetime" />
+				</EntityType>
+				<EntityType Name="Sale">
+					<Key>
+						<PropertyRef Name="id" />
+					</Key>
+					<Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="Sale_Product" Type="varchar" MaxLength="50" Nullable="false" />
+					<Property Name="Sale_Quntity" Type="varchar" MaxLength="5" Nullable="false" />
+					<Property Name="Sale_date" Type="date" Nullable="false" />
+				</EntityType>
+				<EntityType Name="UserMaster">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+					<Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+					<Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+					<Property Name="Email" Type="varchar" MaxLength="50" />
+					<Property Name="Role" Type="varchar" MaxLength="50" />
+					<Property Name="Designation" Type="varchar" MaxLength="50" />
+					<Property Name="MobileNo" Type="varchar" MaxLength="50" />
+					<Property Name="IsActive" Type="bit" />
+					<Property Name="IsDeleted" Type="bit" />
+					<Property Name="CreatedOn" Type="datetime" />
+					<Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+					<Property Name="UpdatedOn" Type="datetime" />
+					<Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+				</EntityType>
+				<Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+					<End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="AspNetUsers">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="AspNetUserClaims">
+							<PropertyRef Name="UserId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+					<End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="AspNetUsers">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="AspNetUserLogins">
+							<PropertyRef Name="UserId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+					<End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="AspNetRoles">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="AspNetUserRoles">
+							<PropertyRef Name="RoleId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+					<End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="AspNetUsers">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="AspNetUserRoles">
+							<PropertyRef Name="UserId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<EntityContainer Name="ModelStoreContainer">
+					<EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="FormMaster" EntityType="Self.FormMaster" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="FormRoleMapping" EntityType="Self.FormRoleMapping" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="RoleMaster" EntityType="Self.RoleMaster" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
+					<EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
+					<AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
+						<End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+					</AssociationSet>
+					<AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
+						<End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+					</AssociationSet>
+					<AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+						<End Role="AspNetRoles" EntitySet="AspNetRoles" />
+						<End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+					</AssociationSet>
+					<AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
+						<End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+					</AssociationSet>
+				</EntityContainer>
+			</Schema>
+		</edmx:StorageModels>
+		<!-- CSDL content -->
+		<edmx:ConceptualModels>
+			<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+				<EntityType Name="C__MigrationHistory">
+					<Key>
+						<PropertyRef Name="MigrationId" />
+						<PropertyRef Name="ContextKey" />
+					</Key>
+					<Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+					<Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+					<Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+					<Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+				</EntityType>
+				<EntityType Name="AspNetRole">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+					<Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+					<NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+				</EntityType>
+				<EntityType Name="AspNetUserClaim">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+					<Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+					<Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+					<NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+				</EntityType>
+				<EntityType Name="AspNetUserLogin">
+					<Key>
+						<PropertyRef Name="LoginProvider" />
+						<PropertyRef Name="ProviderKey" />
+						<PropertyRef Name="UserId" />
+					</Key>
+					<Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+					<Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+					<Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+					<NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+				</EntityType>
+				<EntityType Name="AspNetUser">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+					<Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+					<Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+					<Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+					<Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+					<Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+					<Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+					<Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+					<Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+					<Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+					<Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+					<Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+					<NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+					<NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+					<NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+				</EntityType>
+				<EntityType Name="Product">
+					<Key>
+						<PropertyRef Name="id" />
+					</Key>
+					<Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Product_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="Product_Quntity" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+				</EntityType>
+				<EntityType Name="Purchase">
+					<Key>
+						<PropertyRef Name="id" />
+					</Key>
+					<Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Purchase_Product" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="Purchase_Quntity" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="Purchase_date" Type="DateTime" Nullable="false" Precision="0" />
+				</EntityType>
+				<EntityType Name="Sale">
+					<Key>
+						<PropertyRef Name="id" />
+					</Key>
+					<Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Sale_Product" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="Sale_Quntity" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="Sale_date" Type="DateTime" Nullable="false" Precision="0" />
+				</EntityType>
+				<Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+					<End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="AspNetUsers">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="AspNetUserClaims">
+							<PropertyRef Name="UserId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+					<End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+						<OnDelete Action="Cascade" />
+					</End>
+					<End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+					<ReferentialConstraint>
+						<Principal Role="AspNetUsers">
+							<PropertyRef Name="Id" />
+						</Principal>
+						<Dependent Role="AspNetUserLogins">
+							<PropertyRef Name="UserId" />
+						</Dependent>
+					</ReferentialConstraint>
+				</Association>
+				<Association Name="AspNetUserRoles">
+					<End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+					<End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+				</Association>
+				<EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+					<EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+					<EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+					<EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+					<EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+					<EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+					<EntitySet Name="Products" EntityType="Self.Product" />
+					<EntitySet Name="Purchases" EntityType="Self.Purchase" />
+					<EntitySet Name="Sales" EntityType="Self.Sale" />
+					<AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
+						<End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+					</AssociationSet>
+					<AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
+						<End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+					</AssociationSet>
+					<AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+						<End Role="AspNetRoles" EntitySet="AspNetRoles" />
+						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
+					</AssociationSet>
+					<EntitySet Name="RoleMasters" EntityType="Model.RoleMaster" />
+					<EntitySet Name="FormMasters" EntityType="Model.FormMaster" />
+					<EntitySet Name="UserMasters" EntityType="Model.UserMaster" />
+					<EntitySet Name="FormRoleMappings" EntityType="Model.FormRoleMapping" />
+				</EntityContainer>
+				<EntityType Name="RoleMaster">
+					<Key>
+						<PropertyRef Name="RoleId" />
+					</Key>
+					<Property Name="RoleId" Type="Int32" Nullable="false" />
+					<Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="RoleCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+					<Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+				</EntityType>
+				<EntityType Name="FormMaster">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="NavigateURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="ParentFormId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="FormAccessCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="DisplayOrder" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="IsDisplayMenu" Type="Boolean" />
+					<Property Name="IsActive" Type="Boolean" />
+					<Property Name="IsDeleted" Type="Boolean" />
+					<Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="CreatedOn" Type="DateTime" Precision="3" />
+					<Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+				</EntityType>
+				<EntityType Name="UserMaster">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="IsActive" Type="Boolean" />
+					<Property Name="IsDeleted" Type="Boolean" />
+					<Property Name="CreatedOn" Type="DateTime" Precision="3" />
+					<Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+					<Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+				</EntityType>
+				<EntityType Name="FormRoleMapping">
+					<Key>
+						<PropertyRef Name="Id" />
+					</Key>
+					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+					<Property Name="FormID" Type="Int32" />
+					<Property Name="RoleID" Type="Int32" />
+					<Property Name="AllowInsert" Type="Boolean" />
+					<Property Name="AllowEdit" Type="Boolean" />
+					<Property Name="AllowDelete" Type="Boolean" />
+					<Property Name="AllowView" Type="Boolean" />
+					<Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="CreatedOn" Type="DateTime" Precision="3" />
+					<Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+				</EntityType>
+			</Schema>
+		</edmx:ConceptualModels>
+		<!-- C-S mapping content -->
+		<edmx:Mappings>
+			<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+				<EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+					<EntitySetMapping Name="C__MigrationHistory">
+						<EntityTypeMapping TypeName="Model.C__MigrationHistory">
+							<MappingFragment StoreEntitySet="__MigrationHistory">
+								<ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+								<ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+								<ScalarProperty Name="Model" ColumnName="Model" />
+								<ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="AspNetRoles">
+						<EntityTypeMapping TypeName="Model.AspNetRole">
+							<MappingFragment StoreEntitySet="AspNetRoles">
+								<ScalarProperty Name="Id" ColumnName="Id" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="AspNetUserClaims">
+						<EntityTypeMapping TypeName="Model.AspNetUserClaim">
+							<MappingFragment StoreEntitySet="AspNetUserClaims">
+								<ScalarProperty Name="Id" ColumnName="Id" />
+								<ScalarProperty Name="UserId" ColumnName="UserId" />
+								<ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+								<ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="AspNetUserLogins">
+						<EntityTypeMapping TypeName="Model.AspNetUserLogin">
+							<MappingFragment StoreEntitySet="AspNetUserLogins">
+								<ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+								<ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+								<ScalarProperty Name="UserId" ColumnName="UserId" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="AspNetUsers">
+						<EntityTypeMapping TypeName="Model.AspNetUser">
+							<MappingFragment StoreEntitySet="AspNetUsers">
+								<ScalarProperty Name="Id" ColumnName="Id" />
+								<ScalarProperty Name="Email" ColumnName="Email" />
+								<ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+								<ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+								<ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+								<ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+								<ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+								<ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+								<ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+								<ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+								<ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+								<ScalarProperty Name="UserName" ColumnName="UserName" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="Products">
+						<EntityTypeMapping TypeName="Model.Product">
+							<MappingFragment StoreEntitySet="Product">
+								<ScalarProperty Name="id" ColumnName="id" />
+								<ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+								<ScalarProperty Name="Product_Quntity" ColumnName="Product_Quntity" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="Purchases">
+						<EntityTypeMapping TypeName="Model.Purchase">
+							<MappingFragment StoreEntitySet="Purchase">
+								<ScalarProperty Name="id" ColumnName="id" />
+								<ScalarProperty Name="Purchase_Product" ColumnName="Purchase_Product" />
+								<ScalarProperty Name="Purchase_Quntity" ColumnName="Purchase_Quntity" />
+								<ScalarProperty Name="Purchase_date" ColumnName="Purchase_date" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="Sales">
+						<EntityTypeMapping TypeName="Model.Sale">
+							<MappingFragment StoreEntitySet="Sale">
+								<ScalarProperty Name="id" ColumnName="id" />
+								<ScalarProperty Name="Sale_Product" ColumnName="Sale_Product" />
+								<ScalarProperty Name="Sale_Quntity" ColumnName="Sale_Quntity" />
+								<ScalarProperty Name="Sale_date" ColumnName="Sale_date" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+						<EndProperty Name="AspNetRoles">
+							<ScalarProperty Name="Id" ColumnName="RoleId" />
+						</EndProperty>
+						<EndProperty Name="AspNetUsers">
+							<ScalarProperty Name="Id" ColumnName="UserId" />
+						</EndProperty>
+					</AssociationSetMapping>
+					<EntitySetMapping Name="RoleMasters">
+						<EntityTypeMapping TypeName="Model.RoleMaster">
+							<MappingFragment StoreEntitySet="RoleMaster">
+								<ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+								<ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+								<ScalarProperty Name="RoleCode" ColumnName="RoleCode" />
+								<ScalarProperty Name="RoleName" ColumnName="RoleName" />
+								<ScalarProperty Name="RoleId" ColumnName="RoleId" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="FormMasters">
+						<EntityTypeMapping TypeName="Model.FormMaster">
+							<MappingFragment StoreEntitySet="FormMaster">
+								<ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+								<ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+								<ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+								<ScalarProperty Name="IsActive" ColumnName="IsActive" />
+								<ScalarProperty Name="IsDisplayMenu" ColumnName="IsDisplayMenu" />
+								<ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+								<ScalarProperty Name="FormAccessCode" ColumnName="FormAccessCode" />
+								<ScalarProperty Name="ParentFormId" ColumnName="ParentFormId" />
+								<ScalarProperty Name="NavigateURL" ColumnName="NavigateURL" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="Id" ColumnName="Id" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="UserMasters">
+						<EntityTypeMapping TypeName="Model.UserMaster">
+							<MappingFragment StoreEntitySet="UserMaster">
+								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+								<ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+								<ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+								<ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+								<ScalarProperty Name="IsActive" ColumnName="IsActive" />
+								<ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+								<ScalarProperty Name="Designation" ColumnName="Designation" />
+								<ScalarProperty Name="Role" ColumnName="Role" />
+								<ScalarProperty Name="Email" ColumnName="Email" />
+								<ScalarProperty Name="Name" ColumnName="Name" />
+								<ScalarProperty Name="UserName" ColumnName="UserName" />
+								<ScalarProperty Name="Id" ColumnName="Id" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+					<EntitySetMapping Name="FormRoleMappings">
+						<EntityTypeMapping TypeName="Model.FormRoleMapping">
+							<MappingFragment StoreEntitySet="FormRoleMapping">
+								<ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+								<ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+								<ScalarProperty Name="AllowView" ColumnName="AllowView" />
+								<ScalarProperty Name="AllowDelete" ColumnName="AllowDelete" />
+								<ScalarProperty Name="AllowEdit" ColumnName="AllowEdit" />
+								<ScalarProperty Name="AllowInsert" ColumnName="AllowInsert" />
+								<ScalarProperty Name="RoleID" ColumnName="RoleID" />
+								<ScalarProperty Name="FormID" ColumnName="FormID" />
+								<ScalarProperty Name="Id" ColumnName="Id" />
+							</MappingFragment>
+						</EntityTypeMapping>
+					</EntitySetMapping>
+				</EntityContainerMapping>
+			</Mapping>
+		</edmx:Mappings>
+	</edmx:Runtime>
+	<!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+	<Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+		<Connection>
+			<DesignerInfoPropertySet>
+				<DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+			</DesignerInfoPropertySet>
+		</Connection>
+		<Options>
+			<DesignerInfoPropertySet>
+				<DesignerProperty Name="ValidateOnBuild" Value="true" />
+				<DesignerProperty Name="EnablePluralization" Value="true" />
+				<DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+				<DesignerProperty Name="UseLegacyProvider" Value="false" />
+				<DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+			</DesignerInfoPropertySet>
+		</Options>
+		<!-- Diagram content (shape and connector positions) -->
+		<Diagrams></Diagrams>
+	</Designer>
 </edmx:Edmx>
