@@ -11,7 +11,7 @@ namespace IMS_Auth.Controllers
     {
         Entities db = new Entities();
         // GET: RoleMaster
-        public ActionResult Index()
+        public ActionResult Index()  
         {
             return View();
         }
