@@ -25,5 +25,7 @@ namespace IMS_Auth.Models
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public Nullable<bool> FullRights { get; set; }
+        public Nullable<bool> AllowMenu { get; set; }
     }
 }

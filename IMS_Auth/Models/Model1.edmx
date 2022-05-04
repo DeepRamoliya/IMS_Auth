@@ -99,6 +99,8 @@
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="FullRights" Type="bit" />
+          <Property Name="AllowMenu" Type="bit" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -453,6 +455,8 @@
 					<Property Name="CreatedOn" Type="DateTime" Precision="3" />
 					<Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
 					<Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="FullRights" Type="Boolean" />
+          <Property Name="AllowMenu" Type="Boolean" />
 				</EntityType>
 			</Schema>
 		</edmx:ConceptualModels>
@@ -606,7 +610,9 @@
 					<EntitySetMapping Name="FormRoleMappings">
 						<EntityTypeMapping TypeName="Model.FormRoleMapping">
 							<MappingFragment StoreEntitySet="FormRoleMapping">
-								<ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+								<ScalarProperty Name="AllowMenu" ColumnName="AllowMenu" />
+                <ScalarProperty Name="FullRights" ColumnName="FullRights" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
 								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
 								<ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
 								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />

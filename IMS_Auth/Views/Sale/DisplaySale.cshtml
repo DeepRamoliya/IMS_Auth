@@ -36,8 +36,8 @@
                 @Html.DisplayFor(modelItem => item.Sale_date)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", "Sale", new { id = item.id } ,new { @class = "btn btn-info" }) |
-                @Html.ActionLink("Details", "SaleDetail", "Sale", new { id = item.id }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Edit", "Edit", "Sale", new { id = item.id } ,new { @class = "btn btn-info" }) 
+                @Html.ActionLink("Details", "SaleDetail", "Sale", new { id = item.id }, new { @class = "btn btn-primary" }) 
                 @Html.ActionLink("Delete", "Delete", "Sale", new { id = item.id }, new { @class = "btn btn-danger" })
             </td>
         </tr>

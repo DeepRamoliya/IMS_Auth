@@ -4,15 +4,15 @@
     ViewBag.Title = "ManageFormControll";
 }
 
-<h2>Form Control</h2>
+<h2>View Permission</h2>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.FormID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RoleID)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.AllowInsert)
         </th>
@@ -41,12 +41,12 @@
 
     @foreach (var item in Model) {
     <tr>
-        <td>
+       @* <td>
             @Html.DisplayFor(modelItem => item.FormID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RoleID)
-        </td>
+        </td>*@
         @*<td>
                 <input type="checkbox" class="Selectall" id="FullRights_@item.MenuId" @(item.FullRights == false ? "" : "checked='checked'") onclick="SelectAll(this)" />
             </td>*@
@@ -83,3 +83,109 @@
 </table>
 <button class="btn btn-primary btn-md" id="btnAdd" style="margin-top: 0px;" type="submit">Save</button>
 <button class="btn btn-danger btn-md" id="btnCancel" name="cancel" type="button" value="Cancel">Cancel</button>
+<script>
+        function SelectAll(a) {
+            debugger;
+            a.closet
+            $("#row_"+a +".Checkbox").each(function () {
+                this.checked = true;
+            });
+        }
+
+        $(".Selectall").click(function () {
+            debugger;
+            if (this.checked) {
+                $(this).closest('tr').find('.Checkbox').each(function () {
+                    this.checked = true;
+                });
+            }
+            else {
+                $(this).closest('tr').find('.Checkbox').each(function () {
+                    this.checked = false;
+                });
+            }
+        });
+
+        function CheckValue(a) {
+            debugger;
+            if ($("#allowmenu_" + a).prop("checked") == true && $("#View_" + a).prop("checked") == true && $("#Insert_" + a).prop("checked") == true && $("#Update_" + a).prop("checked") == true && $("#Delete_" + a).prop("checked") == true) {
+                $("#FullRights_" + a).prop("checked", true);
+            }
+
+            else {
+                $("#FullRights_" + a).prop("checked", false);
+            }
+
+        }
+
+
+         $('#btnCancel').click(function () {
+            window.location.href = '@Url.Action("Index", "Roles")';
+            return false;
+         });
+
+        $('#btnAdd').click(function () {
+            debugger;
+            var MenuID = new Array();
+            var AllowMenu = new Array();
+            var AllowInsert = new Array();
+            var AllowUpdate = new Array();
+            var AllowView = new Array();
+            var AllowDelete = new Array();
+            var FullRights = new Array();
+
+            var trs = $("#RoleRights").find("tbody>tr>td>input");
+
+            var flagcount = 0;
+
+            for (var i = 0; i < trs.length; i = i + 7) {
+                MenuID[flagcount] = trs[i].value;
+                FullRights[flagcount] = trs[i + 1].checked;
+                AllowMenu[flagcount] = trs[i + 2].checked;
+                AllowView[flagcount] = trs[i + 3].checked;
+                AllowInsert[flagcount] = trs[i + 4].checked;
+                AllowUpdate[flagcount] = trs[i + 5].checked;
+                AllowDelete[flagcount] = trs[i + 6].checked;
+                flagcount++;
+            }
+
+            var RoleMapping = [];
+            debugger;
+            var RoleID = $("#RoleId").val();
+
+            for (var i = 0; i < MenuID.length; i++) {
+
+                RoleMapping.push({
+                    RoleID: RoleID,
+                    MenuID: MenuID[i],
+                    FullRights: FullRights[i],
+                    AllowMenu: AllowMenu[i],
+                    AllowInsert: AllowInsert[i],
+                    AllowUpdate: AllowUpdate[i],
+                    AllowDelete: AllowDelete[i],
+                    AllowView: AllowView[i],
+                });
+            }
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: '@Url.Action("UpdatePermission", "FormRoleMapping")',
+                data: JSON.stringify(RoleMapping),
+                dataType: "json",
+                async: true,
+                success: function (data) {
+                if (data = true) {
+                $("#alertid").show();
+                $("#alertid").fadeIn(1000);
+                $("#alertid").html("Permission save successfully.");
+                    $("#alertid").fadeOut(5000);
+                }
+                },
+                error: function () {
+                $("#alertid").html("Error in update permission.");
+                }
+             });
+                return false;
+        });
+</script>
