@@ -17,7 +17,7 @@ namespace IMS_Auth.Models
         public int RoleId { get; set; }
         public string RoleName { get; set; }
         public string RoleCode { get; set; }
-        public System.DateTime CreatedOn { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
         public string CreatedBy { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
