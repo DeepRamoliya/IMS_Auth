@@ -126,10 +126,10 @@
           <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleCode" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="CreatedOn" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
           <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="UpdatedOn" Type="datetime2" Precision="7" />
+          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -145,8 +145,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserName" Type="varchar" MaxLength="50" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="Role" Type="varchar" MaxLength="50" />
           <Property Name="Designation" Type="varchar" MaxLength="50" />
@@ -390,7 +390,7 @@
 					<EntitySet Name="RoleMasters" EntityType="Model.RoleMaster" />
 					<EntitySet Name="FormMasters" EntityType="Model.FormMaster" />
 					<EntitySet Name="UserMasters" EntityType="Model.UserMaster" />
-					<EntitySet Name="FormRoleMappings" EntityType="Model.FormRoleMapping" />
+          <EntitySet Name="FormRoleMappings" EntityType="Model.FormRoleMapping" />
 				</EntityContainer>
 				<EntityType Name="RoleMaster">
 					<Key>
@@ -399,10 +399,10 @@
 					<Property Name="RoleId" Type="Int32" Nullable="false" />
 					<Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
 					<Property Name="RoleCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-					<Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="7" />
+					<Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
 					<Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
 					<Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-					<Property Name="UpdatedOn" Type="DateTime" Precision="7" />
+					<Property Name="UpdatedOn" Type="DateTime" Precision="3" />
 				</EntityType>
 				<EntityType Name="FormMaster">
 					<Key>
@@ -427,8 +427,8 @@
 						<PropertyRef Name="Id" />
 					</Key>
 					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-					<Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-					<Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+					<Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+					<Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
 					<Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
 					<Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
 					<Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -440,24 +440,24 @@
 					<Property Name="UpdatedOn" Type="DateTime" Precision="3" />
 					<Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
 				</EntityType>
-				<EntityType Name="FormRoleMapping">
-					<Key>
-						<PropertyRef Name="Id" />
-					</Key>
-					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-					<Property Name="FormID" Type="Int32" />
-					<Property Name="RoleID" Type="Int32" />
-					<Property Name="AllowInsert" Type="Boolean" />
-					<Property Name="AllowEdit" Type="Boolean" />
-					<Property Name="AllowDelete" Type="Boolean" />
-					<Property Name="AllowView" Type="Boolean" />
-					<Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-					<Property Name="CreatedOn" Type="DateTime" Precision="3" />
-					<Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-					<Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        <EntityType Name="FormRoleMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormID" Type="Int32" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="AllowInsert" Type="Boolean" />
+          <Property Name="AllowEdit" Type="Boolean" />
+          <Property Name="AllowDelete" Type="Boolean" />
+          <Property Name="AllowView" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <Property Name="FullRights" Type="Boolean" />
           <Property Name="AllowMenu" Type="Boolean" />
-				</EntityType>
+        </EntityType>
 			</Schema>
 		</edmx:ConceptualModels>
 		<!-- C-S mapping content -->
@@ -607,25 +607,25 @@
 							</MappingFragment>
 						</EntityTypeMapping>
 					</EntitySetMapping>
-					<EntitySetMapping Name="FormRoleMappings">
-						<EntityTypeMapping TypeName="Model.FormRoleMapping">
-							<MappingFragment StoreEntitySet="FormRoleMapping">
-								<ScalarProperty Name="AllowMenu" ColumnName="AllowMenu" />
+          <EntitySetMapping Name="FormRoleMappings">
+            <EntityTypeMapping TypeName="Model.FormRoleMapping">
+              <MappingFragment StoreEntitySet="FormRoleMapping">
+                <ScalarProperty Name="AllowMenu" ColumnName="AllowMenu" />
                 <ScalarProperty Name="FullRights" ColumnName="FullRights" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-								<ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-								<ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-								<ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-								<ScalarProperty Name="AllowView" ColumnName="AllowView" />
-								<ScalarProperty Name="AllowDelete" ColumnName="AllowDelete" />
-								<ScalarProperty Name="AllowEdit" ColumnName="AllowEdit" />
-								<ScalarProperty Name="AllowInsert" ColumnName="AllowInsert" />
-								<ScalarProperty Name="RoleID" ColumnName="RoleID" />
-								<ScalarProperty Name="FormID" ColumnName="FormID" />
-								<ScalarProperty Name="Id" ColumnName="Id" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="AllowView" ColumnName="AllowView" />
+                <ScalarProperty Name="AllowDelete" ColumnName="AllowDelete" />
+                <ScalarProperty Name="AllowEdit" ColumnName="AllowEdit" />
+                <ScalarProperty Name="AllowInsert" ColumnName="AllowInsert" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="FormID" ColumnName="FormID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
 				</EntityContainerMapping>
 			</Mapping>
 		</edmx:Mappings>
