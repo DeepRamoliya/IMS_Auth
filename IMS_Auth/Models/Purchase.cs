@@ -11,12 +11,14 @@ namespace IMS_Auth.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Purchase
     {
         public int id { get; set; }
         public string Purchase_Product { get; set; }
         public string Purchase_Quntity { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime Purchase_date { get; set; }
     }
 }
