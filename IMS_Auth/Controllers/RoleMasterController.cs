@@ -28,6 +28,7 @@ namespace IMS_Auth.Controllers
         [HttpPost]
         public ActionResult CreateRoleMaster(RoleMaster role)
         {
+            role.CreatedBy = System.Web.HttpContext.Current.User.Identity.Name;
             db.RoleMasters.Add(role);
             role.CreatedOn = DateTime.Now;
             db.SaveChanges();
@@ -42,6 +43,7 @@ namespace IMS_Auth.Controllers
         [HttpPost]
         public ActionResult EditRoleMaster(int id, RoleMaster role)
         {
+            role.UpdatedBy = System.Web.HttpContext.Current.User.Identity.Name;
             RoleMaster pr = db.RoleMasters.Where(x => x.RoleId == id).SingleOrDefault();
             pr.RoleName = role.RoleName;
             pr.RoleCode = role.RoleCode;

@@ -33,7 +33,7 @@ namespace IMS_Auth.Controllers
         [HttpPost]
         public ActionResult Create(UserMaster user)
         {
-
+            user.CreatedBy = System.Web.HttpContext.Current.User.Identity.Name;
             db.UserMasters.Add(user);
             user.CreatedOn = DateTime.Now;
             db.SaveChanges();
@@ -49,6 +49,7 @@ namespace IMS_Auth.Controllers
         [HttpPost]
         public ActionResult EditUserMasters(int id, UserMaster user)
         {
+            user.UpdatedBy = System.Web.HttpContext.Current.User.Identity.Name;
             UserMaster ur = db.UserMasters.Where(x => x.Id == id).SingleOrDefault();
             ur.UserName = user.UserName;
             ur.Name = user.Name;

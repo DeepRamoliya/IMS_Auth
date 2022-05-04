@@ -33,7 +33,7 @@ namespace IMS_Auth.Controllers
         [HttpPost]
         public ActionResult Create(FormMaster form)
         {
-            
+            form.CreatedBy = System.Web.HttpContext.Current.User.Identity.Name;
             db.FormMasters.Add(form);
             form.CreatedOn = DateTime.Now;
             db.SaveChanges();
@@ -43,12 +43,15 @@ namespace IMS_Auth.Controllers
         public ActionResult EditFormMaster(int id)
         {
             FormMaster pr = db.FormMasters.Where(x => x.Id == id).SingleOrDefault();
+            List<string> list = db.FormMasters.Select(x => x.FormAccessCode).ToList();
+            ViewBag.ParentFormId = new SelectList(list);
             return View(pr);
         }
 
         [HttpPost]
         public ActionResult EditFormMaster(int id, FormMaster role)
         {
+            role.UpdatedBy= System.Web.HttpContext.Current.User.Identity.Name;
             FormMaster pr = db.FormMasters.Where(x => x.Id == id).SingleOrDefault();
             pr.Name = role.Name;
             pr.NavigateURL = role.NavigateURL;
