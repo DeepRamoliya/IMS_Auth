@@ -4,37 +4,51 @@
     ViewBag.Title = "DisplayProduct";
 }
 
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#tblProduct').DataTable();
+        });
+
+    </script>
+
+
+}
 <h2>Product List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateProduct",null,new { @class="btn btn-primary"})
+    @Html.ActionLink("Create New", "CreateProduct", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Product Name")
-        </th>
-        <th>
-            @Html.DisplayName("Product Quntity")
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product_Quntity)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "UpdateProduct" ,new { id=item.id }, new { @class= "btn btn-info" }) 
-            @Html.ActionLink("Details", "ProductDetail", new { id=item.id }, new { @class = "btn btn-primary" }) 
-            @Html.ActionLink("Delete", "DeleteProduct", new { id=item.id }, new { @class = "btn btn-danger" })
-        </td>
-    </tr>
-}
-
+<table id="tblProduct" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Product Name")
+            </th>
+            <th>
+                @Html.DisplayName("Product Quntity")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product_Quntity)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "UpdateProduct", new { id = item.id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Details", "ProductDetail", new { id = item.id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "DeleteProduct", new { id = item.id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 <input type="hidden" id="hdnMenuCode" value="product" />

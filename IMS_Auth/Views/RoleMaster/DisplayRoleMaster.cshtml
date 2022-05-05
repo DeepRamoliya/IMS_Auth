@@ -5,68 +5,79 @@
 }
 
 <h2>Role List</h2>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#tblRole').DataTable();
+        });
 
-<p>
-    @Html.ActionLink("Create New", "CreateRoleMaster",null, new { @class = "btn btn-primary" })
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Role Name")
-        </th>
-        <th>
-            @Html.DisplayName("Role Code")
-        </th>
-        @* <th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>*@
-        @*<th>
-            @Html.DisplayName("Created By")
-        </th>*@
-        @*<th>
-            @Html.DisplayName("Action")
-        </th>*@
-        @* <th>
-            @Html.DisplayNameFor(model => model.UpdatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedOn)
-        </th>*@
-        <th>
-        </th>
-    </tr>
-
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.RoleName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.RoleCode)
-    </td>
-    @*<td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-        </td>*@
-    @*<td>
-        @Html.DisplayFor(modelItem => item.CreatedBy)
-    </td>*@
-    @*<td>
-        @Html.DisplayFor(modelItem => item.Action)
-    </td>*@
-    @*<td>
-            @Html.DisplayFor(modelItem => item.UpdatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdatedOn)
-        </td>*@
-    <td>
-
-        @Html.ActionLink("Setting", "ManageFormControll",null, new { id = item.RoleId }, new { @class = "btn btn-default" }) 
-        @Html.ActionLink("Edit", "EditRoleMaster", new { id = item.RoleId }, new { @class = "btn btn-info" })
-        @* @Html.ActionLink("Details", "Details", new { id=item.RoleId })*@
-    </td>
-</tr>
+    </script>
 }
+<p>
+    @Html.ActionLink("Create New", "CreateRoleMaster", null, new { @class = "btn btn-primary" })
+</p>
+<table id="tblRole" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Role Name")
+            </th>
+            <th>
+                @Html.DisplayName("Role Code")
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>*@
+            @*<th>
+                @Html.DisplayName("Created By")
+            </th>*@
+            @*<th>
+                @Html.DisplayName("Action")
+            </th>*@
+            @* <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedOn)
+            </th>*@
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleCode)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>*@
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>*@
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Action)
+                </td>*@
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.UpdatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedOn)
+                </td>*@
+                <td>
 
+                    @Html.ActionLink("Setting", "ManageFormControll", null, new { id = item.RoleId }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Edit", "EditRoleMaster", new { id = item.RoleId }, new { @class = "btn btn-info" })
+                    @* @Html.ActionLink("Details", "Details", new { id=item.RoleId })*@
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 <input type="hidden" id="hdnMenuCode" value="rolemaster" />

@@ -3,45 +3,57 @@
 @{
     ViewBag.Title = "DisplaySale";
 }
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#tblSale').DataTable();
+        });
+
+    </script>
+}
+
 
 <h2>Sale List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "SaleProduct",null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Create New", "SaleProduct", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Sale Product")
-        </th>
-        <th>
-            @Html.DisplayName("Sale Quntity")
-        </th>
-        <th>
-            @Html.DisplayName("Sale Date")
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table id="tblSale" class="table">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sale_Product)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sale_Quntity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sale_date)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", "Sale", new { id = item.id } ,new { @class = "btn btn-info" }) 
-                @Html.ActionLink("Details", "SaleDetail", "Sale", new { id = item.id }, new { @class = "btn btn-primary" }) 
-                @Html.ActionLink("Delete", "Delete", "Sale", new { id = item.id }, new { @class = "btn btn-danger" })
-            </td>
+            <th>
+                @Html.DisplayName("Sale Product")
+            </th>
+            <th>
+                @Html.DisplayName("Sale Quntity")
+            </th>
+            <th>
+                @Html.DisplayName("Sale Date")
+            </th>
+            <th></th>
         </tr>
-    }
-
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sale_Product)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sale_Quntity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sale_date)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Sale", new { id = item.id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Details", "SaleDetail", "Sale", new { id = item.id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", "Sale", new { id = item.id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 <input type="hidden" id="hdnMenuCode" value="saleproduct" />
