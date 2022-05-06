@@ -9,10 +9,10 @@
     <tr>
         @*<th>
             @Html.DisplayNameFor(model => model.FormID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RoleID)
         </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.FormName)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.AllowInsert)
         </th>
@@ -25,7 +25,7 @@
         <th>
             @Html.DisplayNameFor(model => model.AllowView)
         </th>
-       @* <th>
+        @* <th>
             @Html.DisplayNameFor(model => model.CreatedBy)
         </th>
         <th>
@@ -40,32 +40,32 @@
     </tr>
 
     @foreach (var item in Model) {
-    <tr>
-       @* <td>
+<tr>
+    @* <td>
             @Html.DisplayFor(modelItem => item.FormID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RoleID)
         </td>*@
-        @*<td>
-                <input type="checkbox" class="Selectall" id="FullRights_@item.MenuId" @(item.FullRights == false ? "" : "checked='checked'") onclick="SelectAll(this)" />
-            </td>*@
-        @*<td>
-                <input type="checkbox" value="@item.AllowMenu" @(item.AllowMenu == false ? "" : "checked='checked'") class="Checkbox" onclick="CheckValue(@item.MenuId)" id="allowmenu_@item.MenuId" />
-            </td>*@
-        <td>
-            <input type="checkbox" value="@item.AllowView" @(item.AllowView == false ? "" : "checked='checked'") class="Checkbox" @*onclick="CheckValue(@item.MenuId)" id="View_@item.MenuId"*@ />
-        </td>
-        <td>
-            <input type="checkbox" value="@item.AllowInsert" @(item.AllowInsert == false ? "" : "checked='checked'") class="Checkbox" @*onclick="CheckValue(@item.MenuId)" id="Insert_@item.MenuId"*@ />
-        </td>
-        <td>
-            <input type="checkbox" value="@item.AllowEdit" @(item.AllowEdit == false ? "" : "checked='checked'") class="Checkbox" @*onclick="CheckValue(@item.MenuId)" id="Update_@item.MenuId"*@ />
-        </td>
-        <td>
-            <input type="checkbox" value="@item.AllowDelete" @(item.AllowDelete == false ? "" : "checked='checked'") class="Checkbox" @*onclick="CheckValue(@item.MenuId)" id="Delete_@item.MenuId"*@ />
-        </td>
-       @* <td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FormName)
+    </td>
+    @*<td>
+            <input type="checkbox" class="Selectall" id="FullRights_@item.MenuId" @(item.FullRights == false ? "" : "checked='checked'") onclick="SelectAll(this)" />
+        </td>*@
+    @*<td>
+            <input type="checkbox" value="@item.AllowMenu" @(item.AllowMenu == false ? "" : "checked='checked'") class="Checkbox" onclick="CheckValue(@item.MenuId)" id="allowmenu_@item.MenuId" />
+        </td>*@
+    <td>
+        <input type="checkbox" value="@item.AllowView" @(item.AllowView == false ? "" : "checked='checked'") class="Checkbox" @*onclick="CheckValue(@item.MenuId)" id="View_@item.MenuId"*@ />
+    </td>
+    <td>
+        <input type="checkbox" value="@item.AllowInsert" @(item.AllowInsert == false ? "" : "checked='checked'") class="Checkbox" @*onclick="CheckValue(@item.MenuId)" id="Insert_@item.MenuId"*@ />
+    </td>
+    <td>
+        <input type="checkbox" value="@item.AllowEdit" @(item.AllowEdit == false ? "" : "checked='checked'") class="Checkbox" @*onclick="CheckValue(@item.MenuId)" id="Update_@item.MenuId"*@ />
+    </td>
+    <td>
+        <input type="checkbox" value="@item.AllowDelete" @(item.AllowDelete == false ? "" : "checked='checked'") class="Checkbox" @*onclick="CheckValue(@item.MenuId)" id="Delete_@item.MenuId"*@ />
+    </td>
+    @* <td>
             @Html.DisplayFor(modelItem => item.CreatedBy)
         </td>
         <td>
@@ -77,7 +77,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.UpdatedOn)
         </td>*@
-    </tr>
+</tr>
 }
 
 </table>

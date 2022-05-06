@@ -33,6 +33,12 @@ namespace IMS_Auth.Controllers
         [HttpPost]
         public ActionResult Create(FormMaster form)
         {
+          
+            FormRoleMapping frm = db.FormRoleMappings.Create();
+            frm.FormName = form.FormAccessCode;
+            frm.RoleID = db.RoleMasters.Select(x => x.RoleId).SingleOrDefault();
+            db.FormRoleMappings.Add(frm);
+
             form.CreatedBy = System.Web.HttpContext.Current.User.Identity.Name;
             db.FormMasters.Add(form);
             form.CreatedOn = DateTime.Now;

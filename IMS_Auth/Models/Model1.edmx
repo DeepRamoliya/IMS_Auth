@@ -101,6 +101,7 @@
           <Property Name="UpdatedOn" Type="datetime" />
           <Property Name="FullRights" Type="bit" />
           <Property Name="AllowMenu" Type="bit" />
+          <Property Name="FormName" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -427,6 +428,7 @@
           <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <Property Name="FullRights" Type="Boolean" />
           <Property Name="AllowMenu" Type="Boolean" />
+          <Property Name="FormName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="RoleMaster">
           <Key>
@@ -578,6 +580,7 @@
           <EntitySetMapping Name="FormRoleMappings">
             <EntityTypeMapping TypeName="Model.FormRoleMapping">
               <MappingFragment StoreEntitySet="FormRoleMapping">
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
                 <ScalarProperty Name="AllowMenu" ColumnName="AllowMenu" />
                 <ScalarProperty Name="FullRights" ColumnName="FullRights" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
