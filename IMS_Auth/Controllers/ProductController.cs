@@ -18,7 +18,7 @@ namespace IMS_Auth.Controllers
         {
             return View();
         }
-
+        [Authorize(Roles ="Admin")]
         public ActionResult DisplayProduct()
         {
             List<Product> list = db.Products.OrderByDescending(x => x.id).ToList();

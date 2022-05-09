@@ -236,6 +236,10 @@
     <Compile Include="Models\UserMaster.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserRolesMapping.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsersRoleProvider.cs" />
     <Compile Include="Models\WebRoleProvider.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

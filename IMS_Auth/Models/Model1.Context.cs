@@ -37,5 +37,6 @@ namespace IMS_Auth.Models
         public virtual DbSet<FormRoleMapping> FormRoleMappings { get; set; }
         public virtual DbSet<RoleMaster> RoleMasters { get; set; }
         public virtual DbSet<UserMaster> UserMasters { get; set; }
+        public virtual DbSet<UserRolesMapping> UserRolesMappings { get; set; }
     }
 }

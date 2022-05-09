@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using IMS_Auth.Models;
+using System.Web.Security;
 
 namespace IMS_Auth.Controllers
 {
@@ -68,6 +69,8 @@ namespace IMS_Auth.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+           
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -79,7 +82,17 @@ namespace IMS_Auth.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                using (Entities context = new Entities())
+                {
+                    bool IsValidUser = context.AspNetUsers.Any(user => user.Email.ToLower() ==
+                         model.Email.ToLower());
+                    if (IsValidUser)
+                    {
+                        FormsAuthentication.SetAuthCookie(model.Email, false);
+                    }
+                }
+                 return RedirectToLocal(returnUrl);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -391,6 +404,7 @@ namespace IMS_Auth.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            FormsAuthentication.SignOut();
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
